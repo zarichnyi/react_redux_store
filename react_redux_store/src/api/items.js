@@ -6,6 +6,3 @@ export const getItems = async() => {
 
   return result;
 }
-
-
-console.log(getItems())

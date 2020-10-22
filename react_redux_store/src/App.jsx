@@ -6,15 +6,18 @@ import { Footer } from './Footer/Footer';
 import * as api from './api/items';
 
 import './App.scss';
-import { setItems } from './redux/items';
+import { addItem, setItems } from './redux/items';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     api.getItems().then((itemsFromServer) => {
-      dispatch(setItems(itemsFromServer));
-      localStorage.setItem('items', []);
+      if (JSON.parse(localStorage.getItem('items'))) {
+        dispatch(setItems(JSON.parse(localStorage.getItem('items'))));
+      } else {
+        dispatch(setItems(itemsFromServer));
+      }
     });
   }, []);
 

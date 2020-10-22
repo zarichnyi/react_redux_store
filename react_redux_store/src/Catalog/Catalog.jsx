@@ -1,11 +1,11 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-// import { Album } from '../Item/Item';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import { Item } from '../Item/Item';
+import { CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -48,9 +48,11 @@ export const Catalog = () => {
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
-            {items && items.map(card => (
+            {items.length ? items.map(card => (
               <Item {...card} key={card.id} />
-            ))}
+            ))
+          : <CircularProgress align="center" />
+          }
           </Grid>
         </Container>
       </main>

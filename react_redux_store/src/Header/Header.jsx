@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Header.scss';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import logo from '../img/logo_n.svg';
+import { AddItemForm } from '../addItemForm/AddItemForm';
+import { useDispatch } from 'react-redux';
 
 export const Header = () => {
+  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <AppBar
@@ -20,12 +24,24 @@ export const Header = () => {
     >
       <Toolbar>
         <Box component="img" src={logo} />
-        <Button variant="contained"
+        <Button
+          type="button"
+          variant="contained"
           style={{ margin: '0 40px' }}
+          onClick={() => dispatch(clear)}
         >
           Очистити каталог
         </Button>
+        <Button
+          type="button"
+          onClick={() => setOpen(true)}
+          variant="contained"
+          style={{ margin: '0 40px' }}
+        >
+          Додати товар
+        </Button>
       </Toolbar>
+      <AddItemForm open={open} setOpen={setOpen} />
     </AppBar>
   );
 };

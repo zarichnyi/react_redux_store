@@ -4,23 +4,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import CardActions from '@material-ui/core/CardActions';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
+import { removeItem } from '../redux/items';
 
 const useStyles = makeStyles(theme => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
   card: {
     height: '100%',
     display: 'flex',
@@ -32,13 +22,10 @@ const useStyles = makeStyles(theme => ({
   cardContent: {
     flexGrow: 1,
   },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
 }));
 
-export const Item = ({ image, title, description }) => {
+export const Item = ({ image, title, description, id }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   return (
@@ -58,14 +45,14 @@ export const Item = ({ image, title, description }) => {
               {description}
             </Typography>
           </CardContent>
-          {/* <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions> */}
+          <CardActions>
+            <Button size="small" color="primary">
+              View
+            </Button>
+            <Button size="small" color="primary" onClick={() => dispatch(removeItem(id))}>
+              Delete
+            </Button>
+          </CardActions>
         </Card>
       </Grid>
     </>

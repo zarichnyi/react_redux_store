@@ -30,6 +30,9 @@ export const Footer = () => {
   const classes = useStyles();
 
   const sumOfPrice = items.map(item => +item.price).reduce((a, b) => a + b, 0);
+  const avaragePrice = items.length > 0
+    ? Math.round((sumOfPrice / items.length) * 100) / 100
+    : 0;
 
   return (
     <footer className={classes.footer}>
@@ -46,8 +49,8 @@ export const Footer = () => {
         </Grid>
         <Grid item xs={3}>
           <Paper className={classes.paper}>
-            {`Avarage price of items : 
-            ${Math.round((sumOfPrice / items.length) * 100) / 100}`}
+            {`Avarage price of items :
+            ${avaragePrice}`}
           </Paper>
         </Grid>
       </Grid>

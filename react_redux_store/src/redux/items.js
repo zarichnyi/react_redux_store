@@ -5,17 +5,17 @@ const ADD_ITEM = 'addItem';
 const REMOVE_ITEM = 'removeItem';
 const CLEAR_CATALOG = 'clearCatalog';
 
-export const setItems = (items) => ({
+export const setItems = items => ({
   type: SET_ITEMS,
   items,
 });
 
-export const addItem = (item) => ({
+export const addItem = item => ({
   type: ADD_ITEM,
   item,
 });
 
-export const removeItem = (id) => ({
+export const removeItem = id => ({
   type: REMOVE_ITEM,
   id,
 });
@@ -46,7 +46,7 @@ const itemsReducer = (state = initialState, action) => {
     }
 
     case CLEAR_CATALOG:
-      localStorage.setItem('items', []);
+      localStorage.setItem('items', JSON.stringify([]));
 
       return [];
 

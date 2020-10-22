@@ -9,7 +9,6 @@ import logo from '../img/logo_n.svg';
 import { AddItemForm } from '../addItemForm/AddItemForm';
 import { clearCatalog } from '../redux/items';
 
-
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();

@@ -24,7 +24,6 @@ export const clearCatalog = () => ({
   type: CLEAR_CATALOG,
 });
 
-
 const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEMS:

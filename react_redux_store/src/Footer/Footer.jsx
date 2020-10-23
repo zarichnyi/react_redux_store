@@ -1,16 +1,18 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import { useSelector } from 'react-redux';
+
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   footer: {
     backgroundColor: theme.palette.grey[300],
     padding: theme.spacing(3),
-    display: 'flex',
     justifyContent: 'space-between',
+    width: '100vw',
+    position: 'fixed',
+    bottom: '0',
   },
   grid: {
     justifyContent: 'center',

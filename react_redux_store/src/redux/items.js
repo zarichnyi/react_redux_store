@@ -40,13 +40,20 @@ const itemsReducer = (state = initialState, action) => {
     case REMOVE_ITEM: {
       const result = state.filter(item => item.id !== action.id);
 
+      if (result.length === 0) {
+        localStorage.setItem('emptyStorage',
+          JSON.stringify(['Products are currently missing']));
+      }
+
       localStorage.setItem('items', JSON.stringify(result));
 
       return result;
     }
 
     case CLEAR_CATALOG:
-      localStorage.setItem('items', JSON.stringify([]));
+      localStorage.setItem('emptyStorage',
+        JSON.stringify(['Products are currently missing']));
+      localStorage.removeItem('items');
 
       return [];
 

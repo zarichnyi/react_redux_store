@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { removeItem } from '../redux/items';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   card: {
     height: '100%',
     display: 'flex',
@@ -20,13 +20,17 @@ const useStyles = makeStyles(theme => ({
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
+    backgroundSize: 'contain',
   },
   cardContent: {
     flexGrow: 1,
   },
+  price: {
+    fontSize: '25px',
+  },
 }));
 
-export const Item = ({ image, title, description, id }) => {
+export const Item = ({ image, title, description, id, price }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = useSelector(state => state.users);
@@ -44,8 +48,12 @@ export const Item = ({ image, title, description, id }) => {
             <Typography gutterBottom variant="h5" component="h2">
               {title}
             </Typography>
-            <Typography>
+            <Typography style={{ width: '100%' }}>
               {description}
+            </Typography>
+            <Typography className={classes.price}>
+              {`${price} `}
+              &#8372;
             </Typography>
           </CardContent>
           <CardActions>

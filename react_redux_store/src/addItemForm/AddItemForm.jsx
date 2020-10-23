@@ -69,8 +69,7 @@ export const AddItemForm = ({ open, setOpen }) => {
           <form onSubmit={handleSubmit}>
             <DialogContent>
               <DialogContentText>
-                Додайте назву, опис та ціну товару.
-                Картинка необов&apos;язкова.
+                Add title, description and price product. Image not required
               </DialogContentText>
               <div className={classes.formInput}>
                 <TextField

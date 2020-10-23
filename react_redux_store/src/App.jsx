@@ -9,6 +9,7 @@ import * as api from './api/items';
 import './App.scss';
 import { setItems } from './redux/items';
 import { setUser } from './redux/users';
+import { MainPage } from './MainPage/MainPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,8 +34,8 @@ const App = () => {
     <div className="container">
       <Header />
       <Switch>
+        <Route path="/" exact component={MainPage} />
         <Route path="/catalog" component={Catalog} />
-        {/* <Route path="*" component={PageNotFound} /> */}
       </Switch>
       <Footer />
     </div>

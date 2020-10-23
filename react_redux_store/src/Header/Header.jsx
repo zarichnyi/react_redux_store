@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -86,7 +87,9 @@ export const Header = () => {
     >
       <Toolbar className={classes.toolbar}>
         <div className={classes.toolbarItems}>
-          <Box component="img" src={logo} />
+          <a href="#">
+            <Box component="img" src={logo} />
+          </a>
           <div className={classes.burgerButton}>
             <Button
               aria-controls="customized-menu"
@@ -136,14 +139,14 @@ export const Header = () => {
             onClick={() => dispatch(clearCatalog())}
             disabled={user !== 'admin'}
           >
-            Очистити каталог
+            Clear catalog
           </Button>
           <Button
             type="button"
             onClick={() => setOpen(true)}
             variant="contained"
           >
-            Додати товар
+            Add product
           </Button>
         </div>
         <LogInForm />
